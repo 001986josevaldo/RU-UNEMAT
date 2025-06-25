@@ -1,0 +1,150 @@
+/* Estilo base para a aba de navegação */
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a.ativo {
+  color: #ffffff;
+  background-color: #0077cc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+body{
+    flex: 1;
+    background-color: #f4f4f4;
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Ocupa todo o espaço restante */
+  padding: 0px;
+  background-color: #f4f4f4;
+}
+.tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #d0e9ff;
+    border: none;
+    border-right: 1px solid #000;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background-color: #7bdcb5;
+    color: #000;
+}
+
+.tab-content {
+    display: none;
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    margin: 0;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+thead {
+    background-color: #eee;
+    font-weight: bold;
+}
+td ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+#btnTopo {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+#btnTopo:hover {
+  background-color: #005fa3;
+}
+
+#btnWhats {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 22px;
+  padding: 12px;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+#btnWhats:hover {
+  background-color: #1ebe5b;
+}
+
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}

@@ -4,8 +4,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Login - RU-UNEMAT</title>
-
   <link rel="stylesheet" href="css/tabelaCardapio.css">
+  <style>
+    /* Estilos para a página de perfil */
+    .perfil-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: none; /* Inicialmente oculto */
+    }
+    
+    .info-usuario {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .saldo {
+      background-color: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .saldo-valor {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4CAF50;
+    }
+    
+    .historico-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    .historico-table th, 
+    .historico-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    .historico-table th {
+      background-color: #f2f2f2;
+    }
+    
+    .historico-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .login-container {
+      max-width: 400px;
+      margin: 0 auto 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .destaque {
+      background-color: #e0e0e0;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 
 <!-- Botão flutuante: Voltar ao topo -->
@@ -18,32 +88,29 @@
 
 <body>
   <div class="pagina">
-  <header>
-    <h1>RU - UNEMAT </h1>
-    <p>Restaurante Universitário</p>
-    <nav>
-      <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="cardapio.html">Cardápio</a></li>
-                    <li><a href="pedidos.html">Pedidos</a></li>
-      </ul>
-    </nav>
-  </header>
-
-
-
+    <header>
+      <h1>RU - UNEMAT </h1>
+      <p>Restaurante Universitário</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <main>
       <!-- Seção de Destaque -->
-      <section class="destaque" style="background-color: #e0e0e0; padding: 30px; text-align: center; margin-bottom: 30px;">
+      <section class="destaque">
         <h2 style="margin: 0; color: #000;">Bem-vindo ao Restaurante Universitário da UNEMAT</h2>
         <p style="font-weight: bold; margin: 10px 0 0; color: #000;">Alimentação de qualidade para a comunidade acadêmica</p>
       </section>
 
-      <!-- Seção de Login -->
-      <section style="max-width: 400px; margin: 0 auto 40px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+      <!-- Seção de Login (mostrada inicialmente) -->
+      <section class="login-container" id="loginSection">
         <h2 style="text-align: center; margin-top: 0;">Acesse sua conta</h2>
-        <form>
+        <form id="loginForm">
           <label for="login">Login:</label>
           <input type="text" id="login" placeholder="Digite seu RA ou CPF" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
           
@@ -51,7 +118,7 @@
           <input type="password" id="senha" placeholder="Digite sua senha" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
           
           <div style="text-align: center; margin: 20px 0;">
-            <button type="submit" style="background-color: #ccc; color: #000; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">ENTRAR</button>
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">ENTRAR</button>
           </div>
           
           <p style="text-align: center;">
@@ -61,14 +128,120 @@
         </form>
       </section>
 
+      <!-- Seção de Perfil (oculta inicialmente) -->
+      <section class="perfil-container" id="perfilSection">
+        <div class="info-usuario">
+          <div>
+            <h2>Olá, Pessoa 1</h2>
+            <p>RA: 123456789</p>
+            <p>Curso: Ciência da Computação</p>
+          </div>
+          <div>
+            <button id="btnLogout" style="background-color: #f44336; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Sair</button>
+          </div>
+        </div>
+        
+        <div class="saldo">
+          <h3>Saldo Disponível</h3>
+          <div class="saldo-valor">R$ 47,50</div>
+          <p><a href="#" style="color: #1a3699;">Recarregar saldo</a></p>
+        </div>
+        
+        <h3>Histórico de Consumo - Últimos 30 dias</h3>
+        <table class="historico-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Refeição</th>
+              <th>Horário</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>17/05/2025</td>
+              <td>Almoço</td>
+              <td>12:15</td>
+              <td>R$ 2,50</td>
+            </tr>
+            <tr>
+              <td>16/05/2025</td>
+              <td>Jantar</td>
+              <td>19:30</td>
+              <td>R$ 2,50</td>
+            </tr>
+            <tr>
+              <td>16/05/2025</td>
+              <td>Almoço</td>
+              <td>11:45</td>
+              <td>R$ 2,50</td>
+            </tr>
+            <tr>
+              <td>15/05/2025</td>
+              <td>Jantar</td>
+              <td>18:15</td>
+              <td>R$ 2,50</td>
+            </tr>
+            <tr>
+              <td>15/05/2025</td>
+              <td>Café da manhã</td>
+              <td>07:30</td>
+              <td>R$ 1,00</td>
+            </tr>
+            <tr>
+              <td>14/05/2025</td>
+              <td>Almoço</td>
+              <td>12:45</td>
+              <td>R$ 2,50</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div style="text-align: center; margin-top: 20px;">
+          <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Ver histórico completo</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Função para verificar login
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const login = document.getElementById('login').value;
+        const senha = document.getElementById('senha').value;
+        
+        // Credenciais de teste: login "pessoa 1" e senha "123456"
+        if ((login === 'pessoa 1' || login === '123456789') && senha === '123456') {
+          // Esconde a seção de login e mostra o perfil
+          document.getElementById('loginSection').style.display = 'none';
+          document.getElementById('perfilSection').style.display = 'block';
+        } else {
+          alert('Login ou senha incorretos!');
+        }
+      });
+      
+      // Função para logout
+      document.getElementById('btnLogout').addEventListener('click', function() {
+        // Mostra a seção de login e esconde o perfil
+        document.getElementById('loginSection').style.display = 'block';
+        document.getElementById('perfilSection').style.display = 'none';
+        
+        // Limpa os campos de login
+        document.getElementById('login').value = '';
+        document.getElementById('senha').value = '';
+      });
+    </script>
+    <script src="js/botaoTopo.js"></script>
+  </div>
 
   <footer>
     <p>
       Email:
-      <a href="mailto:contato.unicode@unemat.br" style="color: #ccc; text-decoration: none;">contato.unicode@unemat.br</a>
+      <a href="mailto:contato.unicode@unemat.br">contato.unicode@unemat.br</a>
       | Telefone: (66) 99999-0000
     </p>
-    <p>Redes: <a href="#" style="color: #ccc; text-decoration: none;">Instagram</a> | <a href="#" style="color: #ccc; text-decoration: none;">Twitter</a></p>
+    <p>Redes: <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
     <p>
       &copy; 2025 RU UNEMAT. Todos os direitos reservados (fictício).
     </p>

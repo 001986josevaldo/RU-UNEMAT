@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Login - RU-UNEMAT</title>
@@ -23,33 +24,55 @@
     <nav>
       <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="horarios.html">Horários</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
                     <li><a href="pedidos.html">Pedidos</a></li>
       </ul>
     </nav>
   </header>
-<main>
-  <section>
-    <h4>PEDIDOS PENDENTES</h4>
-    <article>
-      <p>PEDIDO 1 ------- <button>CANCELAR X</button></p>
-      <p>Data: xx/dd/yyyy<br>Horário: xx:xx</p>
-    </article>
-  </section>
-      <script src="js/botaoTopo.js"></script>
-</main>
-</div>
-      <footer>
-        <p>
-            Email:
-            <a href="mailto:contato.unicode@unemat.br">contato.unicode@unemat.br</a>
-            | Telefone: (66) 99999-0000
-        </p>
-        <p>Redes: <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
-        <p>
-            &copy; 2025 RU UNEMAT. Todos os direitos reservados (fictício).
-        </p>
-    </footer>
+
+
+
+
+    <main>
+      <!-- Seção de Destaque -->
+      <section class="destaque" style="background-color: #e0e0e0; padding: 30px; text-align: center; margin-bottom: 30px;">
+        <h2 style="margin: 0; color: #000;">Bem-vindo ao Restaurante Universitário da UNEMAT</h2>
+        <p style="font-weight: bold; margin: 10px 0 0; color: #000;">Alimentação de qualidade para a comunidade acadêmica</p>
+      </section>
+
+      <!-- Seção de Login -->
+      <section style="max-width: 400px; margin: 0 auto 40px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; margin-top: 0;">Acesse sua conta</h2>
+        <form>
+          <label for="login">Login:</label>
+          <input type="text" id="login" placeholder="Digite seu RA ou CPF" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" placeholder="Digite sua senha" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          
+          <div style="text-align: center; margin: 20px 0;">
+            <button type="submit" style="background-color: #ccc; color: #000; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">ENTRAR</button>
+          </div>
+          
+          <p style="text-align: center;">
+            <a href="#" style="color: #1a3699;">Esqueci minha senha</a> | 
+            <a href="#" style="color: #1a3699;">Cadastre-se aqui</a>
+          </p>
+        </form>
+      </section>
+
+
+  <footer>
+    <p>
+      Email:
+      <a href="mailto:contato.unicode@unemat.br" style="color: #ccc; text-decoration: none;">contato.unicode@unemat.br</a>
+      | Telefone: (66) 99999-0000
+    </p>
+    <p>Redes: <a href="#" style="color: #ccc; text-decoration: none;">Instagram</a> | <a href="#" style="color: #ccc; text-decoration: none;">Twitter</a></p>
+    <p>
+      &copy; 2025 RU UNEMAT. Todos os direitos reservados (fictício).
+    </p>
+  </footer>
 </body>
+
 </html>

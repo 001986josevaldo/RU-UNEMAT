@@ -2,47 +2,125 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Login - RU-UNEMAT</title>
+    <meta charset="UTF-8">
+    <title>Cardápio Semanal</title>
+    <link rel="stylesheet" href="css/tabelaCardapio.css">
+        <link rel="stylesheet" href="css/horarios.css">
 
-  <link rel="stylesheet" href="css/tabelaCardapio.css">
 </head>
-
 <!-- Botão flutuante: Voltar ao topo -->
 <button id="btnTopo" aria-label="Voltar ao topo">⬆</button>
 
 <!-- Botão flutuante: WhatsApp -->
 <a href="https://wa.me/5566999990000" id="btnWhats" target="_blank" aria-label="Fale conosco no WhatsApp">
-  💬
+    💬
 </a>
 
 <body>
-  <div class="pagina">
-  <header>
-    <h1>RU - UNEMAT </h1>
-    <p>Restaurante Universitário</p>
-    <nav>
-      <ul>
+    <div class="pagina">
+
+        <header> <!-- cabeçalho -->
+            <h1>RU - UNEMAT </h1>
+            <p>Restaurante Universitário</p>
+            <nav>
+                <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="horarios.html">Horários</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
                     <li><a href="pedidos.html">Pedidos</a></li>
-      </ul>
-    </nav>
-  </header>
+                </ul>
+            </nav>
+        </header>
+          <main>
+    <section class="horarios">
+      <h2>HORÁRIOS DE ATENDIMENTO</h2>
 
+      <h3>Segunda à sexta:</h3>
+      <p>Café da manhã: das 06h15min às 08h15min;<br>
+         Almoço: das 10h30min às 13h30min;<br>
+         Jantar: das 17h30min às 20h30min.</p>
 
+      <h3>Sábados:</h3>
+      <p>Café da manhã: das 06h15min às 08h15min;<br>
+         Almoço: das 10h30min às 13h30min.</p>
 
-  <main>
-    <section>
-      <label>Login: <input type="text" /></label>
-      <label>Senha: <input type="password" /></label>
-      <p><a href="#">Cadastre aqui</a></p>
+      <h3>Estudantes não auxiliados:</h3>
+      <p>Café da manhã: R$ 1,00<br>
+         Almoço: R$ 2,50<br>
+         Jantar: R$ 2,50</p>
+
+      <h3>Servidores da UNEMAT e terceirizados:</h3>
+      <p>Café da manhã: R$ 3,95<br>
+         Almoço: R$ 18,08<br>
+         Jantar: R$ 18,08</p>
+
+      <p class="nota">
+        Para promover a transparência e o livre acesso à informação, a Universidade Estadual do Mato Grosso disponibiliza o contrato com a empresa responsável pelo fornecimento de serviço alimentar, bem como toda a documentação relacionada ao processo de licitação no
+        <a href="documentos.html">Portal de Documentos</a> do sítio eletrônico da universidade.
+      </p>
     </section>
-    <script src="js/botaoTopo.js"></script>
   </main>
+
+
+
+
+
+
+
+
+        <script src="js/botaoTopo.js"></script>
+
+    </div>
+    
+      <!-- Seção de Serviços -->
+      <section style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1000px; margin: 0 auto;">
+        <div style="width: 30%; min-width: 250px; margin: 10px;">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); height: 100%;">
+            <h3 style="margin-top: 0;">Cardápio Semanal</h3>
+            <p>Confira as opções disponíveis para cada dia da semana</p>
+            <a href="cardapio.html" style="display: inline-block; margin-top: 15px; padding: 8px 12px; border: none; border-radius: 4px; background-color: #ccc; color: #000; text-decoration: none; cursor: pointer;">Ver Cardápio</a>
+          </div>
+        </div>
+        
+        <div style="width: 30%; min-width: 250px; margin: 10px;">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); height: 100%;">
+            <h3 style="margin-top: 0;">Horários</h3>
+            <p>Veja os horários de funcionamento e valores das refeições</p>
+            <a href="horarios.html" style="display: inline-block; margin-top: 15px; padding: 8px 12px; border: none; border-radius: 4px; background-color: #ccc; color: #000; text-decoration: none; cursor: pointer;">Ver Horários</a>
+          </div>
+        </div>
+        
+        <div style="width: 30%; min-width: 250px; margin: 10px;">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); height: 100%;">
+            <h3 style="margin-top: 0;">Documentos</h3>
+            <p>Acesse os documentos oficiais do Restaurante Universitário</p>
+            <a href="documentos.html" style="display: inline-block; margin-top: 15px; padding: 8px 12px; border: none; border-radius: 4px; background-color: #ccc; color: #000; text-decoration: none; cursor: pointer;">Ver Documentos</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Notícias -->
+      <section style="max-width: 800px; margin: 40px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; margin-top: 0;">Notícias e Avisos</h2>
+        
+        <article style="margin: 20px 0; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+          <h3 style="margin: 0 0 10px 0;">Novo sistema de agendamento</h3>
+          <p style="color: #666; font-size: 0.9em; margin: 0 0 10px 0;">Publicado em: 15/06/2025</p>
+          <p style="margin: 0 0 10px 0;">A partir de 01/07/2025, estará disponível o novo sistema de agendamento de refeições pelo site.</p>
+          <a href="#" style="color: #1a3699; font-weight: bold; text-decoration: none;">Leia mais...</a>
+        </article>
+        
+        <article style="margin: 20px 0;">
+          <h3 style="margin: 0 0 10px 0;">Feriado - Funcionamento</h3>
+          <p style="color: #666; font-size: 0.9em; margin: 0 0 10px 0;">Publicado em: 10/06/2025</p>
+          <p style="margin: 0 0 10px 0;">No dia 20/06/2025, o RU funcionará em horário especial das 11h às 14h.</p>
+          <a href="#" style="color: #1a3699; font-weight: bold; text-decoration: none;">Leia mais...</a>
+        </article>
+      </section>
+
+      <script src="js/botaoTopo.js"></script>
+    </main>
   </div>
-      <footer>
+    <footer>
         <p>
             Email:
             <a href="mailto:contato.unicode@unemat.br">contato.unicode@unemat.br</a>
@@ -53,7 +131,8 @@
             &copy; 2025 RU UNEMAT. Todos os direitos reservados (fictício).
         </p>
     </footer>
-  
+
+
 </body>
 
 </html>

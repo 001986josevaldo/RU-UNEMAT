@@ -3,25 +3,198 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Carrinho - RUUNEMAT</title>
-  <link rel="stylesheet" href="css/estilo.css">
+  <title>Carrinho - RU-UNEMAT</title>
+  <link rel="stylesheet" href="css/tabelaCardapio.css">
+  <style>
+    .carrinho-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .item-carrinho {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-carrinho button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .acoes-carrinho {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .empty-cart {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+  </style>
 </head>
 
+<!-- Botão flutuante: Voltar ao topo -->
+<button id="btnTopo" aria-label="Voltar ao topo">⬆</button>
+
+<!-- Botão flutuante: WhatsApp -->
+<a href="https://wa.me/5566999990000" id="btnWhats" target="_blank" aria-label="Fale conosco no WhatsApp">
+  💬
+</a>
+
 <body>
-  <header>CABEÇALHO - NOME (10,00 crédito)</header>
-  <main>
-    <section>
-      <h4>ITENS NO CARRINHO:</h4>
-      <ul>
-        <li>ITEM 1</li>
-        <li>ITEM 2</li>
-        <li>ITEM 3</li>
-      </ul>
-      <p>VALOR: R$2,00</p>
-      <button>CONFIRMAR PEDIDO</button>
-    </section>
-  </main>
-  <footer>RODAPÉ</footer>
+  <div class="pagina">
+    <header>
+      <h1>RU - UNEMAT </h1>
+      <p>Restaurante Universitário</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="carrinho-container">
+        <h2>Seu Carrinho</h2>
+        <div id="listaItens">
+          <!-- Itens do carrinho serão carregados aqui -->
+          <div class="empty-cart">Seu carrinho está vazio</div>
+        </div>
+        
+        <div id="totalContainer" class="total" style="display: none;">
+          TOTAL: R$ <span id="totalValue">0,00</span>
+        </div>
+        
+        <div class="acoes-carrinho">
+          <button id="limparCarrinho" class="tab-btn" style="background-color: #f44336;">LIMPAR CARRINHO</button>
+          <button id="confirmarPedido" class="tab-btn" style="background-color: #4CAF50;">CONFIRMAR PEDIDO</button>
+        </div>
+      </div>
+
+      <script>
+        // Dados do carrinho (simulando localStorage)
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        
+        // Preços fictícios
+        const precos = {
+          'Pão francês (2 unidades)': 1.00,
+          'Café': 0.50,
+          'Leite': 0.75,
+          'Fruta (1 unidade)': 1.50,
+          'Ovos mexidos': 2.00,
+          'Arroz': 1.50,
+          'Feijão': 1.50,
+          'Carne bovina': 3.50,
+          'Salada': 1.00,
+          'Suco natural': 2.00
+        };
+        
+        // Carrega os itens do carrinho ao iniciar
+        window.addEventListener('DOMContentLoaded', () => {
+          atualizarCarrinho();
+        });
+        
+        // Atualiza a exibição do carrinho
+        function atualizarCarrinho() {
+          const listaItens = document.getElementById('listaItens');
+          const totalContainer = document.getElementById('totalContainer');
+          
+          if (carrinho.length === 0) {
+            listaItens.innerHTML = '<div class="empty-cart">Seu carrinho está vazio</div>';
+            totalContainer.style.display = 'none';
+            return;
+          }
+          
+          listaItens.innerHTML = '';
+          let total = 0;
+          
+          carrinho.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item-carrinho';
+            
+            const itemInfo = document.createElement('span');
+            itemInfo.textContent = `${item} - R$ ${precos[item].toFixed(2)}`;
+            
+            const removerBtn = document.createElement('button');
+            removerBtn.textContent = 'Remover';
+            removerBtn.addEventListener('click', () => {
+              removerItem(index);
+            });
+            
+            itemDiv.appendChild(itemInfo);
+            itemDiv.appendChild(removerBtn);
+            listaItens.appendChild(itemDiv);
+            
+            total += precos[item];
+          });
+          
+          document.getElementById('totalValue').textContent = total.toFixed(2);
+          totalContainer.style.display = 'block';
+        }
+        
+        // Remove item do carrinho
+        function removerItem(index) {
+          carrinho.splice(index, 1);
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+          atualizarCarrinho();
+        }
+        
+        // Limpa o carrinho
+        document.getElementById('limparCarrinho').addEventListener('click', () => {
+          carrinho = [];
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+          atualizarCarrinho();
+        });
+        
+        // Confirma o pedido
+        document.getElementById('confirmarPedido').addEventListener('click', () => {
+          if (carrinho.length === 0) {
+            alert('Seu carrinho está vazio!');
+            return;
+          }
+          
+          // Simular envio do pedido
+          const total = carrinho.reduce((sum, item) => sum + precos[item], 0);
+          alert(`Pedido confirmado! Total: R$ ${total.toFixed(2)}\nObrigado por sua compra!`);
+          
+          // Limpar carrinho após confirmação
+          carrinho = [];
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+          atualizarCarrinho();
+        });
+      </script>
+      <script src="js/botaoTopo.js"></script>
+    </main>
+  </div>
+
+  <footer>
+    <p>
+      Email:
+      <a href="mailto:contato.unicode@unemat.br">contato.unicode@unemat.br</a>
+      | Telefone: (66) 99999-0000
+    </p>
+    <p>Redes: <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
+    <p>
+      &copy; 2025 RU UNEMAT. Todos os direitos reservados (fictício).
+    </p>
+  </footer>
 </body>
 
 </html>

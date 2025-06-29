@@ -1,41 +1,110 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f2f2f2;
+/* Estilo base para a aba de navegação */
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header, footer {
-  background-color: #e0e0e0;
-  text-align: center;
-  padding: 10px;
+header h1 {
+  margin: 0;
+}
+.logo-unemat {
+  display: block;
+  margin: 0 auto;
+  max-width: 50%;
+  height: auto; /* para manter proporção */
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a.ativo {
+  color: #ffffff;
+  background-color: #0077cc;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-weight: bold;
 }
+
+body{
+    flex: 1;
+    background-color: #f4f4f4;
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
-  padding: 20px;
+  flex: 1; /* Ocupa todo o espaço restante */
+  padding: 0px;
+  background-color: #f4f4f4;
 }
-section {
-  background: #fff;
-  padding: 20px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+thead {
+    background-color: #eee;
+    font-weight: bold;
 }
-label, input {
-  display: block;
-  margin: 10px 0;
+td ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
 }
-button {
-  margin: 5px;
-  padding: 8px 12px;
+#btnTopo {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077cc;
+  color: white;
   border: none;
-  border-radius: 4px;
-  background-color: #ccc;
+  padding: 12px;
+  font-size: 20px;
+  border-radius: 50%;
   cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
-ul {
-  list-style: none;
-  padding: 0;
+#btnTopo:hover {
+  background-color: #005fa3;
+}
+
+#btnWhats {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 22px;
+  padding: 12px;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+#btnWhats:hover {
+  background-color: #1ebe5b;
+}
+
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
 }

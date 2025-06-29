@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login - RU-UNEMAT</title>
+  <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/tabelaCardapio.css">
   <style>
     /* Estilos para a página de perfil */
@@ -75,6 +76,58 @@
       text-align: center;
       margin-bottom: 30px;
     }
+    
+    /* Estilos para o modal de cadastro */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .close-modal {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close-modal:hover {
+      color: black;
+    }
+    
+    .modal-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .modal-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .btn-confirm {
+      background-color: #4CAF50;
+      color: white;
+    }
   </style>
 </head>
 
@@ -95,7 +148,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="cardapio.html">Cardápio</a></li>
-          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="pedidos.html">Cadastre-se</a></li>
         </ul>
       </nav>
     </header>
@@ -123,7 +176,7 @@
           
           <p style="text-align: center;">
             <a href="#" style="color: #1a3699;">Esqueci minha senha</a> | 
-            <a href="#" style="color: #1a3699;">Cadastre-se aqui</a>
+            <a href="#" id="cadastroLink" style="color: #1a3699;">Cadastre-se aqui</a>
           </p>
         </form>
       </section>
@@ -203,6 +256,24 @@
       </section>
     </main>
 
+    <!-- Modal de Cadastro -->
+    <div id="cadastroModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 style="margin-top: 0;">Cadastro no RU</h2>
+        <p>Para se cadastrar no Restaurante Universitário, você deve:</p>
+        <ol>
+          <li>Comparecer pessoalmente na Coordenação do RU (Bloco X, Sala Y)</li>
+          <li>Apresentar documento de identificação com foto e comprovante de vínculo com a UNEMAT</li>
+          <li>Realizar o depósito inicial obrigatório de <strong>R$ 50,00</strong></li>
+        </ol>
+        <p>Horário de atendimento para cadastro: Segunda a Sexta, das 8h às 12h e das 14h às 18h.</p>
+        <div class="modal-buttons">
+          <button class="btn-confirm" id="btnEntendi">Entendi</button>
+        </div>
+      </div>
+    </div>
+
     <script>
       // Função para verificar login
       document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -230,6 +301,35 @@
         // Limpa os campos de login
         document.getElementById('login').value = '';
         document.getElementById('senha').value = '';
+      });
+      
+      // Modal de cadastro
+      const modal = document.getElementById('cadastroModal');
+      const cadastroLink = document.getElementById('cadastroLink');
+      const closeModal = document.getElementsByClassName('close-modal')[0];
+      const btnEntendi = document.getElementById('btnEntendi');
+      
+      // Abre o modal quando clicar em "Cadastre-se aqui"
+      cadastroLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+      });
+      
+      // Fecha o modal quando clicar no X
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      // Fecha o modal quando clicar em "Entendi"
+      btnEntendi.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      // Fecha o modal quando clicar fora da área do modal
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
       });
     </script>
     <script src="js/botaoTopo.js"></script>
